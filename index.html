@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewpiont" content="width=device-width, initial-scale=1.0">
+ <title>Traffic Light Simulator</title>   
+<style>
+
+.traffic-light{
+width: 300px;
+height: 500px;
+border: 10px solid rgb(117, 56, 6);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+margin-top: 50px;    
+}
+body
+{
+background-image:url('https://media.istockphoto.com/id/1172785569/vector/straight-empty-road-through-the-countryside-green-hills-blue-sky-meadow-and-mountains.jpg?s=612x612&w=0&k=20&c=NvkZeW8iDGfLiaoFfNERIOG6YFIWLOzCy54TLF1qvDs=');
+ background-repeat:no-repeat;
+background-size: cover;
+}
+            
+ 
+.light{
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+    margin: 10px;
+}  
+.red{  
+background-color: red;
+}
+.yellow{
+background-color: yellow;
+}
+.green{
+background-color: green;    
+}
+</style>
+</head>
+<body>
+    <h1>TRAFFIC LIGHT</h1>
+    <div class="traffic-light">
+    <div class="light red"></div>
+    <div class="light yellow"></div>
+    <div class="light green"></div>
+</div>
+<script>
+const redlight = document.querySelector('.red');    
+const yellowlight = document.querySelector('.yellow');   
+const greenlight = document.querySelector('.green');   
+
+function changeLight(){
+setTimeout(() =>{
+redlight.style.backgroundColor ='red';
+yellowlight.style.backgroundColor ='transparent';
+greenlight.style.backgroundColor ='transparent';
+
+setTimeout(() =>{
+redlight.style.backgroundColor ='transparent';
+yellowlight.style.backgroundColor ='yellow';
+greenlight.style.backgroundColor ='transparent';
+
+setTimeout(() =>{
+redlight.style.backgroundColor ='transparent';
+yellowlight.style.backgroundColor ='transparent';
+greenlight.style.backgroundColor ='green';
+
+changeLight();//Recursively call to keep the cycle going
+},2000); //Green light for 2 seconds
+},1000); //Yellow light for 1 second
+},2000); //Red light for 2 seconds
+} 
+changeLight();//start the cycle   
+</script>
+</body>  
+</html>
